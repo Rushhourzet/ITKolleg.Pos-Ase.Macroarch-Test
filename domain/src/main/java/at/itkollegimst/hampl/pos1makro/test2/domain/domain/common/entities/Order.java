@@ -1,4 +1,4 @@
-package at.itkollegimst.hampl.pos1makro.test2.domain.domain.common;
+package at.itkollegimst.hampl.pos1makro.test2.domain.domain.common.entities;
 
 import java.sql.Date;
 import java.sql.Time;
