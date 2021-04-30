@@ -1,7 +1,6 @@
-package at.itkollegimst.hampl.pos1makro.test2.bookshop.adapters;
-
-import at.itkollegimst.hampl.pos1makro.test2.bookshop.domain.aggregate.Order;
-import at.itkollegimst.hampl.pos1makro.test2.bookshop.repository.OrderRepository;
+package at.itkollegimst.hampl.pos1makro.test2.domainbookshop.orderdomain.adapters;
+import at.itkollegimst.hampl.pos1makro.test2.domainbookshop.orderdomain.repository.OrderRepository;
+import at.itkollegimst.hampl.pos1makro.test2.domainbookshop.orderdomain.domain.abstractions.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,23 +9,15 @@ import java.util.List;
 
 @Service
 @Transactional
-public class OrderService {
+public interface OrderService {
     @Autowired
-    private OrderRepository orderRepository;
+    OrderRepository orderRepository = null;
 
-    public List<Order> listAllOrders() {
-        return orderRepository.findAll();
-    }
+    public List<Order> listAllOrders();
 
-    public void saveOrder(Order order) {
-        orderRepository.save(order);
-    }
+    public void saveOrder(Order order);
 
-    public Order getOrder(long id) {
-        return orderRepository.findById(id).get();
-    }
+    public Order getOrder(long id) ;
 
-    public void deleteOrder(long id) {
-        orderRepository.deleteById(id);
-    }
+    public void deleteOrder(long id) ;
 }

@@ -1,7 +1,7 @@
 package at.itkollegimst.hampl.pos1makro.test2.bookshop.application;
 
-import at.itkollegimst.hampl.pos1makro.test2.bookshop.adapters.OrderService;
-import at.itkollegimst.hampl.pos1makro.test2.bookshop.domain.aggregate.Order;
+import at.itkollegimst.hampl.pos1makro.test2.domainbookshop.orderdomain.adapters.OrderService;
+import at.itkollegimst.hampl.pos1makro.test2.domainbookshop.orderdomain.domain.abstractions.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
