@@ -12,6 +12,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 
 import java.util.Collection;
+import java.util.Optional;
 
 public class BookOrderAggregate{
     @Autowired
@@ -19,6 +20,7 @@ public class BookOrderAggregate{
     private final Order order;
     private final Collection<LineItem> books;
     private final User user;
+    private Optional<Order> monadOrder;
 
 
     public BookOrderAggregate(Order order, Collection<LineItem> books, User user) {

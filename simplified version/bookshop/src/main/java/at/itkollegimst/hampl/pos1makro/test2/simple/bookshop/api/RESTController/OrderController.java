@@ -1,5 +1,6 @@
 package at.itkollegimst.hampl.pos1makro.test2.simple.bookshop.api.RESTController;
 
+import at.Rushhourz.Railway.Try;
 import at.itkollegimst.hampl.pos1makro.test2.simple.bookshop.entities.Order;
 import at.itkollegimst.hampl.pos1makro.test2.simple.bookshop.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 @RestController
 @RequestMapping("/orders")
@@ -20,7 +25,8 @@ public class OrderController {
     public List<Order> list() {
         return orderService.listAllOrders();
     }
-/* //needs reworked mappings
+
+
     @GetMapping("/{id}")
     public ResponseEntity<Order> get(@PathVariable Long id) {
         try {
@@ -32,27 +38,28 @@ public class OrderController {
     }
 
     @PostMapping("/")
-    public void add(@RequestBody Order order) {
-        orderService.saveOrder(order);
+    public ResponseEntity<?> add(@RequestBody Order order) {
+        return saveOrder(order);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Order order, @PathVariable Long id) {
-        try {
-            Order existUser = orderService.getOrder(id);
-            //Order.setId(id);
-            orderService.saveOrder(order);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return saveOrder(order);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-
         orderService.deleteOrder(id);
     }
 
- */
+
+    private ResponseEntity<HttpStatus> saveOrder(Order order){
+        try{
+            orderService.saveOrder(order);
+            return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+        } catch(Throwable t){
+            return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

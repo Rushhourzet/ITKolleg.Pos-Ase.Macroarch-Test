@@ -38,4 +38,6 @@ public class Order {
     public long getId() {
         return this.id;
     }
+    public long getUserId(){ return this.user;}
+    public Collection<LineItem> getShopList(){return this.shopList;}
 }

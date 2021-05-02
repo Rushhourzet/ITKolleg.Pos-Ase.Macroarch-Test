@@ -1,5 +1,6 @@
 package at.itkollegimst.hampl.pos1makro.test2.simple.bookshop.services;
 
+import at.Rushhourz.Railway.Try;
 import at.itkollegimst.hampl.pos1makro.test2.simple.bookshop.aggregates.BookOrderAggregate;
 import at.itkollegimst.hampl.pos1makro.test2.simple.bookshop.components.LineItem;
 import at.itkollegimst.hampl.pos1makro.test2.simple.bookshop.entities.Book;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
 @Service
 @Transactional
@@ -78,11 +80,13 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
-    public void saveOrder(Order order) {
-        //will throw an exception since it should not be possible to save without user or books
-        new BookOrderAggregate(order, books, user).save();
+    public void saveOrder(Order order) throws Throwable {
+        User user = userRepository.getOne(order.getUserId());
+        Try.ofThrowable(()->new BookOrderAggregate(order, order.getShopList(), user))
+                .get()
+                .save();
     }
-/*
+
     public Order getOrder(long id) {
         return orderRepository.findById(id).get();
     }
@@ -90,5 +94,5 @@ public class OrderService {
     public void deleteOrder(long id) {
         orderRepository.deleteById(id);
     }
- */
+
 }
