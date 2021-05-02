@@ -1,10 +1,9 @@
-package at.itkollegimst.hampl.pos1makro.test2.domainbookshop.orderdomain.domain.abstractions;
+package at.itkollegimst.hampl.pos1makro.test2.simple.bookshop.entities;
 
-import at.itkollegimst.hampl.pos1makro.test2.domainbookshop.bookdomain.domain.abstraction.Product;
-import at.itkollegimst.hampl.pos1makro.test2.domainbookshop.orderdomain.domain.components.LineItem;
-import at.itkollegimst.hampl.pos1makro.test2.domainbookshop.orderdomain.domain.components.OrderStatus;
-import at.itkollegimst.hampl.pos1makro.test2.domainbookshop.userdomain.domain.entities.User;
+import at.itkollegimst.hampl.pos1makro.test2.simple.bookshop.components.LineItem;
+import at.itkollegimst.hampl.pos1makro.test2.simple.bookshop.components.OrderStatus;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,5 +33,9 @@ public class Order {
 
     public Order() {
 
+    }
+
+    public long getId() {
+        return this.id;
     }
 }

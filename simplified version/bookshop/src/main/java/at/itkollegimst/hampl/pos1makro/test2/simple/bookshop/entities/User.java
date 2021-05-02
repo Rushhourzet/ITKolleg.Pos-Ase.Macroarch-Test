@@ -1,4 +1,4 @@
-package at.itkollegimst.hampl.pos1makro.test2.domainbookshop.userdomain.domain.entities;
+package at.itkollegimst.hampl.pos1makro.test2.simple.bookshop.entities;
 
 import lombok.Data;
 

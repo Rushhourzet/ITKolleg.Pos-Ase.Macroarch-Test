@@ -13,6 +13,7 @@ import java.util.List;
 @Transactional
 public class DomainOrderService implements OrderService {
 
+//Should use Aggregate and use the aggregate business logic
     @Autowired
     private OrderRepository orderRepository;
 
